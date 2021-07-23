@@ -12,17 +12,26 @@ echo +=============================================+
 set cdir=%~dp0common
 set q=n
 set /p q=Remove garbage UWP-apps? (y/n): 
-if /i "%q%"=="y" start /wait /b powershell -Command "& {set-ExecutionPolicy Bypass -Scope Process -Force;&"""%cdir%\removeappx.ps1"""}"
+if /i "%q%"=="y" call :posh "%cdir%\removeappx.ps1"
 set q=n
 set /p q=Disable XboxPanel? (y/n): 
-if /i "%q%"=="y" reg import "%cdir%\disxboxpanel.reg"
+if /i "%q%"=="y" call :reg "%cdir%\disxboxpanel.reg"
 set q=n
 set /p q=Remove OneDrive? (y/n): 
-if /i "%q%"=="y" start /wait /b powershell -Command "& {set-ExecutionPolicy Bypass -Scope Process -Force;& """%cdir%\removeOneDrive.ps1"""}"
+if /i "%q%"=="y" call :posh "%cdir%\removeOneDrive.ps1"
 set q=n
 set /p q=Remove 3D-objects? (y/n): 
-if /i "%q%"=="y" reg import "%cdir%\remove-3dobjects.reg"
+if /i "%q%"=="y" call :reg "%cdir%\remove-3dobjects.reg"
 set q=n
 set /p q=Enable Windows Picture viewer? (y/n): 
-if /i "%q%"=="y" reg import "%cdir%\ON_Windows_10_Photo_Viewer.reg"
+if /i "%q%"=="y" call :reg "%cdir%\ON_Windows_10_Photo_Viewer.reg"
 pause
+exit /b 0
+
+:reg
+reg import %1
+exit /b 0
+
+:posh
+start /wait /b powershell -Command "& {set-ExecutionPolicy Bypass -Scope Process -Force;& """%~1"""}"
+exit /b 0

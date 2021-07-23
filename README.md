@@ -20,6 +20,6 @@ Use it at your own risk.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📄 **appx.txt** - list of ugly UWP-apps  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📜 **removeOneDrive.ps1** - remove preinstalled OneDrive app
 
-## How-to run
+## How-to use
 
 Simple run **winclean.cmd** as Administrator
